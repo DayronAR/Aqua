@@ -39,12 +39,18 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            // Asigna el rol por defecto 'cliente'
+            'role' => 'cliente',
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        // Redirige según el rol
+        if ($user->role === 'admin') {
+            return redirect(route('dashboard', absolute: false));
+        }
+        return redirect('/');
     }
 }
