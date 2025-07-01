@@ -11,9 +11,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [AdminController::class, 'index'])
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::get('/dashboard', function() {
+    if (auth()->check() && in_array(auth()->user()->email, ['admin@gmail.com', 'alber@gmail.com'])) {
+        return app(\App\Http\Controllers\AdminController::class)->index();
+    }
+    return redirect('/');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

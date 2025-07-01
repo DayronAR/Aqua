@@ -1,25 +1,51 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-2xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-2xl text-blue-800 leading-tight">
             {{ __('Panel de Administración') }}
         </h2>
     </x-slot>
 
-    <div class="flex min-h-screen bg-gray-100">
+    <div class="flex min-h-screen bg-gradient-to-br from-blue-100 via-cyan-100 to-white">
         {{-- Menú lateral --}}
-        <aside class="w-64 bg-white shadow-md p-6 space-y-4">
-            <a href="{{ route('dashboard', ['section' => 'inicio']) }}" class="block py-2 px-4 rounded hover:bg-gray-200 {{ request('section', 'inicio') == 'inicio' ? 'bg-blue-100 font-bold' : '' }}">Inicio</a>
-            <a href="{{ route('dashboard', ['section' => 'usuarios']) }}" class="block py-2 px-4 rounded hover:bg-gray-200 {{ request('section') == 'usuarios' ? 'bg-blue-100 font-bold' : '' }}">Usuarios</a>
-            <a href="{{ route('dashboard', ['section' => 'pedidos']) }}" class="block py-2 px-4 rounded hover:bg-gray-200 {{ request('section') == 'pedidos' ? 'bg-blue-100 font-bold' : '' }}">Pedidos</a>
-            <a href="{{ route('dashboard', ['section' => 'productos']) }}" class="block py-2 px-4 rounded hover:bg-gray-200 {{ request('section') == 'productos' ? 'bg-blue-100 font-bold' : '' }}">Productos</a>
-            <a href="{{ route('dashboard', ['section' => 'ventas']) }}" class="block py-2 px-4 rounded hover:bg-gray-200 {{ request('section') == 'ventas' ? 'bg-blue-100 font-bold' : '' }}">Ventas</a>
+        <aside class="w-64 bg-gradient-to-b from-blue-700 to-cyan-500 shadow-lg p-6 space-y-4 text-white">
+            <div class="mb-8 flex items-center gap-2">
+                <svg class="w-8 h-8 text-cyan-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10C22 6.477 17.523 2 12 2z" /></svg>
+                <span class="font-bold text-xl tracking-wide">Aqua Admin</span>
+            </div>
+            <a href="{{ route('dashboard', ['section' => 'inicio']) }}" class="block py-2 px-4 rounded-lg transition-all duration-200 hover:bg-cyan-200 hover:text-blue-900 {{ request('section', 'inicio') == 'inicio' ? 'bg-cyan-100 text-blue-900 font-bold' : '' }}">Inicio</a>
+            <a href="{{ route('dashboard', ['section' => 'usuarios']) }}" class="block py-2 px-4 rounded-lg transition-all duration-200 hover:bg-cyan-200 hover:text-blue-900 {{ request('section') == 'usuarios' ? 'bg-cyan-100 text-blue-900 font-bold' : '' }}">Usuarios</a>
+            <a href="{{ route('dashboard', ['section' => 'pedidos']) }}" class="block py-2 px-4 rounded-lg transition-all duration-200 hover:bg-cyan-200 hover:text-blue-900 {{ request('section') == 'pedidos' ? 'bg-cyan-100 text-blue-900 font-bold' : '' }}">Pedidos</a>
+            <a href="{{ route('dashboard', ['section' => 'productos']) }}" class="block py-2 px-4 rounded-lg transition-all duration-200 hover:bg-cyan-200 hover:text-blue-900 {{ request('section') == 'productos' ? 'bg-cyan-100 text-blue-900 font-bold' : '' }}">Productos</a>
+            <a href="{{ route('dashboard', ['section' => 'ventas']) }}" class="block py-2 px-4 rounded-lg transition-all duration-200 hover:bg-cyan-200 hover:text-blue-900 {{ request('section') == 'ventas' ? 'bg-cyan-100 text-blue-900 font-bold' : '' }}">Ventas</a>
         </aside>
 
         {{-- Contenido dinámico --}}
-        <main class="flex-1 p-8">
+        <main class="flex-1 p-10">
             @if(request('section', 'inicio') == 'inicio')
-                <h3 class="text-2xl font-bold mb-4">Bienvenido al panel de administración</h3>
-                <p>Selecciona una opción del menú para comenzar.</p>
+                <h3 class="text-3xl font-bold mb-8 text-blue-900">Bienvenido al panel de administración</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center border-t-4 border-cyan-400">
+                        <div class="bg-cyan-100 rounded-full p-3 mb-2"><svg class="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 0 0-3-3.87M9 20H4v-2a4 4 0 0 1 3-3.87m9-4.13a4 4 0 1 0-8 0 4 4 0 0 0 8 0z" /></svg></div>
+                        <div class="text-2xl font-bold text-blue-800">{{ $users->count() }}</div>
+                        <div class="text-cyan-700">Usuarios</div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center border-t-4 border-blue-400">
+                        <div class="bg-blue-100 rounded-full p-3 mb-2"><svg class="w-8 h-8 text-cyan-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7v4a1 1 0 0 0 1 1h3m10-5h3a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-3m-4 4v4m0 0H7a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-5z" /></svg></div>
+                        <div class="text-2xl font-bold text-blue-800">{{ $pedidos->count() }}</div>
+                        <div class="text-cyan-700">Pedidos</div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center border-t-4 border-cyan-400">
+                        <div class="bg-cyan-100 rounded-full p-3 mb-2"><svg class="w-8 h-8 text-blue-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 13V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6m16 0a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2m16 0V7m0 6v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6" /></svg></div>
+                        <div class="text-2xl font-bold text-blue-800">{{ $productos->count() }}</div>
+                        <div class="text-cyan-700">Productos</div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center border-t-4 border-blue-400">
+                        <div class="bg-blue-100 rounded-full p-3 mb-2"><svg class="w-8 h-8 text-cyan-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 0V4m0 8v8" /></svg></div>
+                        <div class="text-2xl font-bold text-blue-800">{{ $ventas->count() }}</div>
+                        <div class="text-cyan-700">Ventas</div>
+                    </div>
+                </div>
+                <p class="text-lg text-blue-800">Selecciona una opción del menú para comenzar.</p>
             @elseif(request('section') == 'usuarios')
                 {{-- Sección de usuarios deshabilitada, ahora solo se muestra la tabla users (Laravel) --}}
                 <div class="bg-white shadow-md rounded-lg p-6">

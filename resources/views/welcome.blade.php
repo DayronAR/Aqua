@@ -163,6 +163,10 @@
                         >
                             Dashboard
                         </a>
+                        <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+                            @csrf
+                            <button type="submit" class="btn btn-small btn-primary" style="margin-left: 10px; background:#e53e3e; color:white; border:none;">Cerrar sesión</button>
+                        </form>
                     @else
                         <a
                             href="{{ route('login') }}"
