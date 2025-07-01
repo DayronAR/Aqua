@@ -131,17 +131,20 @@
         max-width: 350px;
       }
     }
+    .about-image {
+      margin: 40px;
+    }
   </style>
 </head>
 <body>
 
   <header class="hero">
     <video autoplay loop muted playsinline class="bg-video">
-      <source src="{{ asset('Img/Agua_Fondo.mp4') }}" type="video/mp4">
+      <source src="Img/Agua_Fondo.mp4" type="video/mp4">
     </video>
     <nav class="navbar">
       <div class="logo-container">
-        <img src="png-transparent-logo-drinking-water-water-quality-store-revitalized-water-water.png" alt="Logo AquaPure" class="logo">
+        <img src="Img/png-transparent-logo-drinking-water-water-quality-store-revitalized-water-water.png" alt="Logo AquaPure" class="logo">
         <h1>AquaPure Solutions</h1>
       </div>
       <ul class="nav-links">
@@ -154,18 +157,12 @@
         @if (Route::has('login'))
                 <nav class="flex items-center justify-end gap-4">
                     @auth
-                        @if(Auth::user()->role === 'admin')
-                            <a
-                                href="{{ url('/dashboard') }}"
-                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
-                            >
-                                Dashboard
-                            </a>
-                        @endif
-                        <form method="POST" action="{{ route('logout') }}" style="display:inline;">
-                            @csrf
-                            <button type="submit" class="inline-block px-5 py-1.5 ml-2 bg-red-600 hover:bg-red-700 text-white rounded-sm text-sm leading-normal border border-transparent">Cerrar sesión</button>
-                        </form>
+                        <a
+                            href="{{ url('/dashboard') }}"
+                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"
+                        >
+                            Dashboard
+                        </a>
                     @else
                         <a
                             href="{{ route('login') }}"
@@ -255,7 +252,7 @@
       <!-- Producto 1 -->
       <div class="product-card">
         <div class="product-image">
-          <img src="1.jpg" alt="Filtro Premium AquaPure">
+          <img src="Img/1.jpg" alt="Filtro Premium AquaPure">
           <div class="product-badge">Oferta</div>
         </div>
         <div class="product-info">
@@ -271,7 +268,7 @@
       <!-- Producto 2 -->
       <div class="product-card">
         <div class="product-image">
-          <img src="2.jpg" alt="Filtro Básico AquaPure">
+          <img src="Img/2.jpg" alt="Filtro Básico AquaPure">
         </div>
         <div class="product-info">
           <h3>Filtro Básico AquaPure</h3>
@@ -283,7 +280,7 @@
       <!-- Producto 3 -->
       <div class="product-card">
         <div class="product-image">
-          <img src="3.jpg" alt="AquaPure Industrial 10000">
+          <img src="Img/3.jpg" alt="AquaPure Industrial 10000">
         </div>
         <div class="product-info">
           <h3>AquaPure Industrial 10000</h3>
@@ -295,7 +292,7 @@
       <!-- Producto 4 -->
       <div class="product-card">
         <div class="product-image">
-          <img src="4.jpg" alt="Kit de Repuestos Premium">
+          <img src="Img/4.jpg" alt="Kit de Repuestos Premium">
           <div class="product-badge">Oferta</div>
         </div>
         <div class="product-info">
@@ -311,7 +308,7 @@
       <!-- Producto 5 -->
       <div class="product-card">
         <div class="product-image">
-          <img src="5.jpg" alt="Filtro Compacto AquaPure">
+          <img src="Img/5.jpg" alt="Filtro Compacto AquaPure">
         </div>
         <div class="product-info">
           <h3>Filtro Compacto AquaPure</h3>
@@ -323,7 +320,7 @@
       <!-- Producto 6 -->
       <div class="product-card">
         <div class="product-image">
-          <img src="6.jpg" alt="Filtro para Cocina">
+          <img src="Img/6.jpg" alt="Filtro para Cocina">
         </div>
         <div class="product-info">
           <h3>Filtro para Cocina</h3>
@@ -335,7 +332,7 @@
       <!-- Producto 7 -->
       <div class="product-card">
         <div class="product-image">
-          <img src="7.jpg" alt="Filtro para Ducha">
+          <img src="Img/7.jpg" alt="Filtro para Ducha">
         </div>
         <div class="product-info">
           <h3>Filtro para Ducha</h3>
@@ -347,7 +344,7 @@
       <!-- Producto 8 -->
       <div class="product-card">
         <div class="product-image">
-          <img src="8.jpg" alt="Filtro Portátil">
+          <img src="Img/8.jpg" alt="Filtro Portátil">
         </div>
         <div class="product-info">
           <h3>Filtro Portátil</h3>
@@ -463,7 +460,7 @@
         <h3>AquaPure Solutions</h3>
         <p>Agua pura y saludable para tu hogar desde 2008.</p>
         <div class="footer-logo">
-          <img src="png-transparent-logo-drinking-water-water-quality-store-revitalized-water-water.png" alt="Logo AquaPure">
+          <img src="Img/png-transparent-logo-drinking-water-water-quality-store-revitalized-water-water.png" alt="Logo AquaPure">
         </div>
       </div>
       <div class="footer-section">
@@ -750,3 +747,4 @@
   </script>
 </body>
 </html>
+
